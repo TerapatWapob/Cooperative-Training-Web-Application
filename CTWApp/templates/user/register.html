@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }}  <!-- แสดงชื่อของหน้า -->
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <hr>
+    <div class="card">
+      <div class="card-header bg-success text-white text-center">
+        <h2>{{ title }}</h2>  <!-- แสดงชื่อหัวข้อ -->
+      </div>
+      <div class="card-body">
+        <form action="" method="post" novalidate>
+          {{ form.hidden_tag() }}  <!-- ฟอร์มลับ (hidden field) สำหรับการป้องกัน CSRF -->
+
+          <div class="mb-3">
+            {{ form.username.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกชื่อผู้ใช้ -->
+            {% if form.username.errors %}
+              {{ form.username(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.username(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.email.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกอีเมล -->
+            {% if form.email.errors %}
+              {{ form.email(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.fname.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกชื่อจริง -->
+            {% if form.fname.errors %}
+              {{ form.fname(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.fname.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.fname(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.lname.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกนามสกุล -->
+            {% if form.lname.errors %}
+              {{ form.lname(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.lname.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.lname(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.password.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกรหัสผ่าน -->
+            {% if form.password.errors %}
+              {{ form.password(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            {{ form.confirm_password.label(class='form-label') }}  <!-- แสดงช่องสำหรับช่องกรอกการยืนยันรหัสผ่าน -->
+            {% if form.confirm_password.errors %}
+              {{ form.confirm_password(class='is-invalid form-control') }}  <!-- ถ้ามีข้อผิดพลาดให้แสดงสถานะเป็น 'invalid' -->
+              <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.confirm_password(class='form-control') }}  <!-- ไม่มีข้อผิดพลาด แสดงช่องกรอกข้อมูลปกติ -->
+            {% endif %}
+          </div>
+
+          <hr>
+          <div class="mb-3">
+            {{ form.submit(class='btn btn-outline-success') }}  <!-- ปุ่มส่งฟอร์ม -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

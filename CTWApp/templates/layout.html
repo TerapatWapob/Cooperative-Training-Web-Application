@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTW App - {% block title %}{% endblock %}</title>  <!-- ตั้งชื่อแท็บตามเนื้อหาของบล็อก title -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">  <!-- ลิงก์ไปยังไฟล์ CSS ของ Bootstrap -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">  <!-- ลิงก์ไปยังไฟล์ CSS ของเรา -->
+  <link rel="icon" href="{{url_for('static', filename='image/favicon.ico')}}" type="image/x-icon">  <!-- ไอคอนของเว็บไซต์ -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  <!-- ลิงก์ไปยังไอคอนของ Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">  <!-- ลิงก์ไปยังฟอนต์ Itim จาก Google Fonts -->
+  <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>  <!-- ลิงก์ไปยังไฟล์ JavaScript ของ Bootstrap -->
+</head>
+<body>
+  {% include "navbar.html" %}  <!-- รวมไฟล์นำทาง (navbar) -->
+  {% block content %}{% endblock %}  <!-- แสดงเนื้อหาของหน้า -->
+
+</body>
+</html>

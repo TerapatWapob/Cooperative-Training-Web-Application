@@ -1,0 +1,32 @@
+<form action="{{ url_for('flask.add_record') }}" method="post">
+  {{ form.hidden_tag() }}  <!-- ใช้ CSRF token เพื่อป้องกันการโจมตี CSRF -->
+
+  <!-- ฟิลด์สำหรับกรอกชื่อบริษัท -->
+  <div class="mb-3">
+    {{ form.coperatename.label(class='form-label') }}  <!-- ช่องฟิลด์ชื่อบริษัท -->
+    {{ form.coperatename(class='form-control') }}  <!-- ฟิลด์กรอกชื่อบริษัท -->
+  </div>
+
+  <!-- ฟิลด์สำหรับกรอกข้อมูลติดต่อ -->
+  <div class="mb-3">
+    {{ form.contact.label(class='form-label') }}  <!-- ช่องฟิลด์ข้อมูลติดต่อ -->
+    {{ form.contact(class='form-control') }}  <!-- ฟิลด์กรอกข้อมูลติดต่อ -->
+  </div>
+
+  <!-- ฟิลด์สำหรับกรอกชื่อผู้ดูแล -->
+  <div class="mb-3">
+    {{ form.superviser.label(class='form-label') }}  <!-- ช่องฟิลด์ชื่อผู้ดูแล -->
+    {{ form.superviser(class='form-control') }}  <!-- ฟิลด์กรอกชื่อผู้ดูแล -->
+  </div>
+
+  <!-- ฟิลด์สำหรับกรอกรายละเอียด -->
+  <div class="mb-3">
+    {{ form.detail.label(class='form-label') }}  <!-- ช่องฟิลด์รายละเอียด -->
+    {{ form.detail(class='form-control') }}  <!-- ฟิลด์กรอกรายละเอียด -->
+  </div>
+
+  <!-- ปุ่มส่งฟอร์ม -->
+  <div class="mb-3">
+    {{ form.submit(class='btn btn-primary') }}  <!-- ปุ่มส่งข้อมูล -->
+  </div>
+</form>

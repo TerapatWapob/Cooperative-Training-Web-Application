@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }}  <!-- ตั้งชื่อหน้าเว็บตามที่กำหนด -->
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ title }}</h1>  <!-- แสดงชื่อหน้าเว็บ -->
+    <hr>
+    <div class="card">
+      <div class="card-header bg-success text-white text-center">
+        <h2>{{ title }}</h2>  <!-- แสดงชื่อหน้าเว็บในส่วนหัวของการ์ด -->
+      </div>
+      <div class="card-body">
+        <form action="{{ url_for('flask.login') }}" method="post" novalidate>
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.username.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์ชื่อผู้ใช้ -->
+            {% if form.username.errors %}
+              {{ form.username(class='is-invalid form-control') }}  <!-- แสดงฟิลด์ชื่อผู้ใช้พร้อมสไตล์ข้อผิดพลาด -->
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.username(class='form-control') }}  <!-- แสดงฟิลด์ชื่อผู้ใช้ตามปกติ -->
+            {% endif %}
+          </div>
+          
+          <div class="mb-3">
+            {{ form.password.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์รหัสผ่าน -->
+            {% if form.password.errors %}
+              {{ form.password(class='is-invalid form-control') }}  <!-- แสดงฟิลด์รหัสผ่านพร้อมสไตล์ข้อผิดพลาด -->
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span>{{ error }}</span>  <!-- แสดงข้อความข้อผิดพลาด -->
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class='form-control') }}  <!-- แสดงฟิลด์รหัสผ่านตามปกติ -->
+            {% endif %}
+          </div>
+          
+          <div class="mb-3">
+            <div class="form-check">
+              {{ form.remember(class='form-check-input') }}  <!-- แสดงช่องทำเครื่องหมาย "จดจำฉัน" -->
+              {{ form.remember.label(class='form-check-label') }}  <!-- แสดงช่องสำหรับช่องทำเครื่องหมาย "จดจำฉัน" -->
+            </div>
+          </div>
+          
+          <hr>
+          <div class="mb-3 d-flex">
+            <div class="me-2">
+              {{ form.submit(class='btn btn-outline-success') }}  <!-- ปุ่มเข้าสู่ระบบ -->
+            </div>
+            <a href="{{ url_for('flask.register') }}" class="btn btn-outline-primary">Register</a>  <!-- ลิงก์ไปยังหน้าลงทะเบียน -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

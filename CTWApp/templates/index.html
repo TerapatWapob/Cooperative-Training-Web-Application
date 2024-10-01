@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }}  <!-- แสดงชื่อของหน้า -->
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <hr>
+
+    <!-- Section to display existing CT records -->
+    <div class="card">
+      <div class="card-header bg-secondary text-white text-center">
+        <h2>[บันทึกสถานที่ฝึกงาน]</h2>  <!-- หัวข้อสำหรับบันทึกสถานที่ฝึกงาน -->
+      </div>
+      <div class="card-body">
+        {% if cts %}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company Name</th>  <!-- ชื่อบริษัท -->
+                <th>Contact</th>  <!-- ข้อมูลติดต่อ -->
+                <th>Supervisor</th>  <!-- ชื่อผู้ควบคุม -->
+                <th>Details</th>  <!-- รายละเอียด -->
+                <th>Added By</th>  <!-- คอลัมน์สำหรับชื่อผู้ที่เพิ่มข้อมูล -->
+              </tr>
+            </thead>
+            <tbody>
+              {% for ct in cts %}
+                <tr>
+                  <td>{{ ct.coperatename }}</td>  <!-- ชื่อบริษัท -->
+                  <td>{{ ct.contact }}</td>  <!-- ข้อมูลติดต่อ -->
+                  <td>{{ ct.superviser }}</td>  <!-- ชื่อผู้ควบคุม -->
+                  <td>{{ ct.detail or 'N/A' }}</td>  <!-- รายละเอียด หรือ 'N/A' หากไม่มีข้อมูล -->
+                  <td>{{ ct.user.fname }} {{ ct.user.lname }}</td>  <!-- แสดงชื่อเต็ม (fname + lname) ของผู้ที่เพิ่มข้อมูล -->
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No CT records found.</p>  <!-- แสดงข้อความหากไม่มีข้อมูล CT -->
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

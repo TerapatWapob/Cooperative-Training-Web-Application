@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ title }}  <!-- ตั้งชื่อหน้าเว็บตามที่กำหนด -->
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ title }}</h1>  <!-- แสดงชื่อหน้าเว็บ -->
+    <hr>
+    <div class="card">
+      <div class="card-header bg-success text-white text-center">
+        <h2>{{ title }}</h2>  <!-- แสดงชื่อหน้าเว็บในส่วนหัวของการ์ด -->
+      </div>
+      <div class="card-body">
+        <form method="post" novalidate>
+          {{ form.hidden_tag() }}  <!-- ใช้ CSRF token เพื่อความปลอดภัย -->
+
+          <!-- ฟิลด์ชื่อผู้ใช้ (อ่านอย่างเดียว) -->
+          <div class="mb-3">
+            {{ form.username.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์ชื่อผู้ใช้ -->
+            {{ form.username(class='form-control', readonly=True) }}  <!-- แสดงฟิลด์ชื่อผู้ใช้ในโหมดอ่านอย่างเดียว -->
+          </div>
+
+          <!-- ฟิลด์อีเมล (อ่านอย่างเดียว) -->
+          <div class="mb-3">
+            {{ form.email.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์อีเมล -->
+            {{ form.email(class='form-control', readonly=True) }}  <!-- แสดงฟิลด์อีเมลในโหมดอ่านอย่างเดียว -->
+          </div>
+
+          <!-- ฟิลด์ชื่อจริง (อ่านอย่างเดียว) -->
+          <div class="mb-3">
+            {{ form.fname.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์ชื่อจริง -->
+            {{ form.fname(class='form-control', readonly=True) }}  <!-- แสดงฟิลด์ชื่อจริงในโหมดอ่านอย่างเดียว -->
+          </div>
+
+          <!-- ฟิลด์นามสกุล (อ่านอย่างเดียว) -->
+          <div class="mb-3">
+            {{ form.lname.label(class='form-label') }}  <!-- แสดงช่องสำหรับฟิลด์นามสกุล -->
+            {{ form.lname(class='form-control', readonly=True) }}  <!-- แสดงฟิลด์นามสกุลในโหมดอ่านอย่างเดียว -->
+          </div>
+
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

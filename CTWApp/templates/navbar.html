@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">  <!-- เริ่มต้นแถบนำทาง -->
+  <div class="container-fluid">  <!-- แบ่งการจัดวางให้ใช้พื้นที่เต็มที่ -->
+    <a class="navbar-brand">CTW App</a>  <!-- ชื่อแบรนด์ของแอป -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">  <!-- ปุ่มสำหรับเปิด/ปิดเมนูเมื่อหน้าจอเล็ก -->
+      <span class="navbar-toggler-icon"></span>  <!-- ไอคอนสำหรับปุ่มเมนู -->
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">  <!-- เมนูนำทางที่ซ่อนได้เมื่อหน้าจอเล็ก -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">  <!-- เมนูหลัก -->
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ url_for('flask.home') }}">Home</a>  <!-- ลิงก์ไปที่หน้าโฮม -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('flask.manage_ct') }}">Coperate Data</a>  <!-- ลิงก์ไปที่หน้าจัดการข้อมูล -->
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">  <!-- เมนูที่อยู่ทางขวาของแถบ -->
+        {% if current_user.is_authenticated %}  <!-- เช็คว่าผู้ใช้ล็อกอินอยู่หรือไม่ -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('flask.account') }}">Profile</a>  <!-- ลิงก์ไปที่หน้าโปรไฟล์ -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('flask.logout') }}">Logout</a>  <!-- ลิงก์ออกจากระบบ -->
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('flask.login') }}">Login</a>  <!-- ลิงก์ไปที่หน้าล็อกอิน -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('flask.register') }}">Register</a>  <!-- ลิงก์ไปที่หน้าลงทะเบียน -->
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
